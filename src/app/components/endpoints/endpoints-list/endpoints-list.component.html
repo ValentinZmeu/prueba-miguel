@@ -1,6 +1,7 @@
 <div class="list-wrapper">
   <mat-card *ngFor="let endpoint of (dataService.allData$ | async)">
     @if(userRole !== "Admin" &&endpoint.HTTPS === true){
+      
       <mat-card-header>
         <mat-card-title>{{ endpoint.API }} <span>{{ endpoint.Category }}</span></mat-card-title>
         <mat-card-subtitle>{{ endpoint.Description }}</mat-card-subtitle>
@@ -9,12 +10,13 @@
         <button mat-stroked-button  [disableRipple]="true" [color]="endpoint.HTTPS ? 'primary' : 'warn'">
           {{ endpoint.HTTPS ? "seguro" : "inseguro" }}
         </button>
-        <button mat-raised-button color="accent" (click)="deleteEndpoint(endpoint)">
+        <button mat-raised-button color="accent" (click)="deleteEndpoint(endpoint,endpoint.API)">
           <mat-icon>delete</mat-icon>
           ELIMINAR
         </button>
       </mat-card-actions>
-    }@else if(userRole == "Admin"){
+
+    }@else if(userRole === "Admin"){
       <mat-card-header>
         <mat-card-title>{{ endpoint.API }} <span>{{ endpoint.Category }}</span></mat-card-title>
         <mat-card-subtitle>{{ endpoint.Description }}</mat-card-subtitle>
@@ -23,7 +25,7 @@
         <button mat-stroked-button  [disableRipple]="true" [color]="endpoint.HTTPS ? 'primary' : 'warn'">
           {{ endpoint.HTTPS ? "seguro" : "inseguro" }}
         </button>
-        <button mat-raised-button color="accent" (click)="deleteEndpoint(endpoint)">
+        <button mat-raised-button color="accent" (click)="deleteEndpoint(endpoint,endpoint.API)">
           <mat-icon>delete</mat-icon>
           ELIMINAR
         </button>
