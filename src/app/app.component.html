@@ -5,7 +5,7 @@
 
   <div>
     <small>Rol:</small>
-    <mat-select [(value)]="authService.userRole" [panelWidth]="100">
+    <mat-select [(value)]="authService.userRole" [panelWidth]="100" (selectionChange)="onRoleChange($event)">
       <mat-option *ngFor="let role of authService.roles" [value]="role">
         {{role}}
       </mat-option>

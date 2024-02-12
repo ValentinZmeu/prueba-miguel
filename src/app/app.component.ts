@@ -9,7 +9,7 @@ import {NgForOf} from "@angular/common";
 import {AuthService} from "./services/auth.service";
 import {HttpClientModule} from "@angular/common/http";
 import {EndpointsService} from "./services/data-services/endpoints.service";
-
+import { EndpointsListComponent } from "./components/endpoints/endpoints-list/endpoints-list.component";
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -38,4 +38,11 @@ export class AppComponent {
     public authService: AuthService
   ) {
   }
+
+  onRoleChange(event: any) {
+    this.authService.setUserRole(event.value);
+  }
+
+  
+ 
 }
