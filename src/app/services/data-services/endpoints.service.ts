@@ -30,7 +30,7 @@ export class EndpointsService {
    */
   loadAll() {
     this.loading = true;
-    this.http.get('/assets/endpoints-data.json').subscribe((value: any) => {
+    this.http.get('https://api.publicapis.org/entries').subscribe((value: any) => {
       this.allData$.next(value.entries);
 
       // delay loading status change
