@@ -1,0 +1,12 @@
+.mat-toolbar {
+  &, & > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: .5rem;
+  }
+}
+
+main {
+  padding: 1rem;
+}

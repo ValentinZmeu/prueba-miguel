@@ -1,0 +1,18 @@
+<div class="list-wrapper">
+  <mat-card *ngFor="let endpoint of (dataService.allData$ | async)">
+    <mat-card-header>
+      <mat-card-title>{{ endpoint.API }}</mat-card-title>
+      <mat-card-subtitle>{{ endpoint.Description }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions style="display: flex; justify-content: space-between">
+      <button mat-stroked-button  [disableRipple]="true" [color]="endpoint.HTTPS ? 'primary' : 'warn'">
+        {{ endpoint.HTTPS ? "seguro" : "inseguro" }}
+      </button>
+      <button mat-raised-button color="accent" (click)="deleteEndpoint(endpoint)">
+        <mat-icon>delete</mat-icon>
+        ELIMINAR
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+

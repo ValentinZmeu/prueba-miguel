@@ -1,3 +1,11 @@
+# API endpoint
+
+The API endpoint used to load the data is:
+
+https://api.publicapis.org/entries
+
+---
+
 # Angular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.3.
