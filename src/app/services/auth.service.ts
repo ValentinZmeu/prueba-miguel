@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-
+import { EndpointsListComponent } from '../components/endpoints/endpoints-list/endpoints-list.component';
 @Injectable({
   providedIn: 'root'
 })
@@ -9,5 +9,9 @@ export class AuthService {
 
   constructor() {
 
+  }
+
+  setUserRole(role: string) {
+    this.userRole = role;
   }
 }
