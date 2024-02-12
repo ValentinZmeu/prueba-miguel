@@ -1,7 +1,8 @@
 <div class="list-wrapper">
   <mat-card *ngFor="let endpoint of (dataService.allData$ | async)">
       <mat-card-header>
-        <mat-card-title>{{ endpoint.API }}</mat-card-title>
+
+        <mat-card-title>{{ endpoint.API }} <span>{{ endpoint.Category }}</span></mat-card-title>
         <mat-card-subtitle>{{ endpoint.Description }}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-actions style="display: flex; justify-content: space-between">
