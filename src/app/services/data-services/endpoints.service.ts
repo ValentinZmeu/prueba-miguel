@@ -20,7 +20,7 @@ export class EndpointsService {
   allData$: BehaviorSubject<EndpointInterface[]> = new BehaviorSubject<EndpointInterface[]>([]);
   
   constructor(
-    public http: HttpClient
+    private http: HttpClient
   ) {
 
   }
@@ -42,9 +42,9 @@ export class EndpointsService {
    * @param endpoint
    */
   delete(endpoint: EndpointInterface) {
-   
+    console.log("delete")
     const url = `https://api.publicapis.org/entries/${endpoint.API}`;
-    this.http.delete(url).subscribe(
+    this.http.request('delete', url).subscribe(
       () => {
         console.log('Endpoint eliminado correctamente:', endpoint.API); 
       },
