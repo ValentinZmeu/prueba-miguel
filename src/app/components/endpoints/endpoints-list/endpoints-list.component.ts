@@ -8,6 +8,7 @@ import {EndpointInterface, EndpointsService} from "../../../services/data-servic
 import {MatGridList, MatGridTile} from "@angular/material/grid-list";
 import { AuthService } from '../../../services/auth.service';
 import { DialogAnimationsExampleDialog } from '../../../modal-borrado/modal-borrado.component';
+
 @Component({
   selector: 'app-endpoints-list',
   standalone: true,
@@ -19,7 +20,7 @@ import { DialogAnimationsExampleDialog } from '../../../modal-borrado/modal-borr
     AsyncPipe,
     MatGridList,
     MatGridTile,
-    
+
   ],
   templateUrl: './endpoints-list.component.html',
   styleUrl: './endpoints-list.component.scss'
@@ -30,7 +31,7 @@ export class EndpointsListComponent {
   constructor(
     public dataService: EndpointsService,
     private authService: AuthService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
 
   ) {
     dataService.loadAll();
@@ -42,21 +43,19 @@ export class EndpointsListComponent {
     this.name = api;
     const dialogRef = this.dialog.open(DialogAnimationsExampleDialog, {
       width: '500px',
-      
       data: api
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log("llega al endpoint")
-      result = true
-      if (result) {
-        this.dataService.delete(endpoint);
-      }
     });
   }
 
   get userRole(): string {
     return this.authService.userRole;
   }
+
+  @Output() allDataOutput: EventEmitter<EndpointInterface[]> = new EventEmitter<EndpointInterface[]>();
+
 
   
 }

@@ -18,9 +18,9 @@ export interface EndpointInterface {
 export class EndpointsService {
   loading: boolean = false;
   allData$: BehaviorSubject<EndpointInterface[]> = new BehaviorSubject<EndpointInterface[]>([]);
-
+  
   constructor(
-    private http: HttpClient
+    public http: HttpClient
   ) {
 
   }
@@ -32,7 +32,6 @@ export class EndpointsService {
     this.loading = true;
     this.http.get('https://api.publicapis.org/entries').subscribe((value: any) => {
       this.allData$.next(value.entries);
-
       // delay loading status change
       setTimeout(() => this.loading = false, 1600);
     })
@@ -43,24 +42,18 @@ export class EndpointsService {
    * @param endpoint
    */
   delete(endpoint: EndpointInterface) {
-    // Form the URL to send the DELETE request
+   
     const url = `https://api.publicapis.org/entries/${endpoint.API}`;
-
-    // Send the DELETE request to the API
     this.http.delete(url).subscribe(
       () => {
-        console.log('Endpoint eliminado correctamente:', endpoint.API);
-        // Update the list of endpoints after deletion
-        
+        console.log('Endpoint eliminado correctamente:', endpoint.API); 
       },
       error => {
         console.error('Error al eliminar el endpoint:', error);
-        // Handle the error as needed
       }
     );
     const updatedList = this.allData$.value.filter(item => item !== endpoint);
         this.allData$.next(updatedList);
   }
-
 
 }
