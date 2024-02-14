@@ -1,6 +1,10 @@
 import {Component,Inject} from '@angular/core';
 import { EndpointsService } from '../services/data-services/endpoints.service';
 import { EndpointsListComponent } from '../components/endpoints/endpoints-list/endpoints-list.component';
+import {MatCardModule} from "@angular/material/card";
+import {MatButton} from "@angular/material/button";
+import {MatIcon} from "@angular/material/icon";
+
 import {
   MatDialog,
   MatDialogRef,
