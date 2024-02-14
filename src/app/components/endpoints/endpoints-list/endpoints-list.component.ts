@@ -47,6 +47,10 @@ export class EndpointsListComponent {
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log("llega al endpoint")
+      result = true
+      if (result) {
+        this.dataService.delete(endpoint);
+      }
     });
   }
 
